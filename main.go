@@ -51,11 +51,11 @@ func main() {
 	_, _ = bot.Request(tgbotapi.NewSetMyCommands([]tgbotapi.BotCommand{
 		{
 			Command:     "help",
-			Description: "Get help",
+			Description: "Yardım",
 		},
 		{
 			Command:     "new",
-			Description: "Clear context and start a new conversation",
+			Description: "Yeni Konuşma Başlat",
 		},
 	}...))
 
@@ -104,7 +104,7 @@ func main() {
 				}
 			}
 			if !userAllowed {
-				_, err := bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("You are not allowed to use this bot. User ID: %d", update.Message.Chat.ID)))
+				_, err := bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("Botu Kullanmak için yetkiniz bulunmuyor. User ID: %d", update.Message.Chat.ID)))
 				if err != nil {
 					log.Print(err)
 				}
@@ -120,14 +120,14 @@ func main() {
 			// Extract the command from the Message.
 			switch update.Message.Command() {
 			case "start":
-				msg.Text = "Welcome to ChatGPT bot! Write something to start a conversation. Use /new to clear context and start a new conversation."
+				msg.Text = "Sohbet başlatmak için bir şeyler yazın."
 			case "help":
-				msg.Text = "Write something to start a conversation. Use /new to clear context and start a new conversation."
+				msg.Text = "Sohbet başlatmak için bir şeyler yazın. Yeni bir konuşma başlatmak için /new komutunu kullanın."
 			case "new":
 				resetUser(update.Message.From.ID)
-				msg.Text = "OK, let's start a new conversation."
+				msg.Text = "Peki, yeni bir konuşma başlatalım."
 			default:
-				msg.Text = "I don't know that command"
+				msg.Text = "Bu komutu bilmiyorum"
 			}
 
 			if _, err := bot.Send(msg); err != nil {
