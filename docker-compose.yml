@@ -8,7 +8,7 @@ services:
       - OPENAI_API_KEY=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
       - TELEGRAM_APITOKEN=6251073689:AAH3N4cE4eGzPoMtB3g_0dib95BQ0y0x3JU
       # optional, default is empty. Only allow these users to use the bot. Empty means allow all users.
-      - ALLOWED_TELEGRAM_ID=1209393541
+      - ALLOWED_TELEGRAM_ID=1209393541,1634972637
       # optional, default is 1.0. Higher temperature means more random responses.
       # See https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
       - MODEL_TEMPERATURE=1.0
